@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "SKak9ozamCMA3O2gpiu8pvIEPE7fVn64i6Sdz3bohj3xeypkkzbl1lyQKTDc6nj3p8mwngy3uD5EYsV3FqjCzA==",
+  "dgSpecHash": "aacN+YBpgVIbYfirKr80jB3qOm66oSp9P4Ig/f06LD7/qDCe/Ahl6ajg8M49Sfo63rHKbuZHKln2LUsLIwDTwA==",
   "success": true,
-  "projectFilePath": "C:\\PROJETOS\\ESTUDO\\Desafios\\semear\\SemearApi\\SemearApi\\SemearApi.csproj",
+  "projectFilePath": "C:\\PROJETOS\\PROJETOS_CORE\\semear-api\\SemearApi.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\jordao\\.nuget\\packages\\bcrypt.net-next\\4.0.2\\bcrypt.net-next.4.0.2.nupkg.sha512",
     "C:\\Users\\jordao\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",

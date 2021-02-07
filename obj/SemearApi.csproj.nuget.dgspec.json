@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\PROJETOS\\ESTUDO\\Desafios\\semear\\SemearApi\\SemearApi\\SemearApi.csproj": {}
+    "C:\\PROJETOS\\PROJETOS_CORE\\semear-api\\SemearApi.csproj": {}
   },
   "projects": {
-    "C:\\PROJETOS\\ESTUDO\\Desafios\\semear\\SemearApi\\SemearApi\\SemearApi.csproj": {
+    "C:\\PROJETOS\\PROJETOS_CORE\\semear-api\\SemearApi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\PROJETOS\\ESTUDO\\Desafios\\semear\\SemearApi\\SemearApi\\SemearApi.csproj",
+        "projectUniqueName": "C:\\PROJETOS\\PROJETOS_CORE\\semear-api\\SemearApi.csproj",
         "projectName": "SemearApi",
-        "projectPath": "C:\\PROJETOS\\ESTUDO\\Desafios\\semear\\SemearApi\\SemearApi\\SemearApi.csproj",
+        "projectPath": "C:\\PROJETOS\\PROJETOS_CORE\\semear-api\\SemearApi.csproj",
         "packagesPath": "C:\\Users\\jordao\\.nuget\\packages\\",
-        "outputPath": "C:\\PROJETOS\\ESTUDO\\Desafios\\semear\\SemearApi\\SemearApi\\obj\\",
+        "outputPath": "C:\\PROJETOS\\PROJETOS_CORE\\semear-api\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Microsoft\\Xamarin\\NuGet",
