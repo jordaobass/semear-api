@@ -6,18 +6,18 @@ namespace SemearApi.Repository.Configuration
 {
     public class RepositoryBase<TEntity> : IRepositoryBase<TEntity> where TEntity : class, new()
     {
-        protected readonly AppContext AppContext;
+        protected readonly SemearAppContext SemearAppContext;
 
-        public RepositoryBase(AppContext appContext)
+        public RepositoryBase(SemearAppContext semearAppContext)
         {
-            AppContext = appContext;
+            SemearAppContext = semearAppContext;
         }
 
         public IQueryable<TEntity> GetAll()
         {
             try
             {
-                return AppContext.Set<TEntity>();
+                return SemearAppContext.Set<TEntity>();
             }
             catch (Exception ex)
             {
@@ -34,8 +34,8 @@ namespace SemearApi.Repository.Configuration
 
             try
             {
-                await AppContext.AddAsync(entity);
-                await AppContext.SaveChangesAsync();
+                await SemearAppContext.AddAsync(entity);
+                await SemearAppContext.SaveChangesAsync();
 
                 return entity;
             }
@@ -54,8 +54,8 @@ namespace SemearApi.Repository.Configuration
 
             try
             {
-                AppContext.Update(entity);
-                await AppContext.SaveChangesAsync();
+                SemearAppContext.Update(entity);
+                await SemearAppContext.SaveChangesAsync();
 
                 return entity;
             }

@@ -16,15 +16,15 @@ namespace SemearApi.Service
     public class UserService : IUserService
     {
         
-        private IUserRepositoryBase _userRepositoryBase;
+        private IUserRepository _userRepository;
 
         private readonly AppSettings _appSettings;
         
         
-        public UserService(IOptions<AppSettings> appSettings , IUserRepositoryBase userRepositoryBase)
+        public UserService(IOptions<AppSettings> appSettings , IUserRepository userRepository)
         {
             _appSettings = appSettings.Value;
-            _userRepositoryBase = userRepositoryBase;
+            _userRepository = userRepository;
         }
         
         
@@ -34,7 +34,7 @@ namespace SemearApi.Service
             try
             {
                 user.Password = BCrypt.Net.BCrypt.HashPassword(user.Password);
-                return ( await    _userRepositoryBase.AddAsync(user)).Id;
+                return ( await    _userRepository.AddAsync(user)).Id;
 
             }
             catch (Exception e)
@@ -47,7 +47,7 @@ namespace SemearApi.Service
         public string Authenticate(string username, string password)
         {
 
-            var user=    _userRepositoryBase.GetAll().FirstOrDefault(s => s.Email == username);
+            var user=    _userRepository.GetAll().FirstOrDefault(s => s.Email == username);
            
             if (user == null || !BCrypt.Net.BCrypt.Verify(password, user.Password)) return null;
            
@@ -70,18 +70,18 @@ namespace SemearApi.Service
 
         public IEnumerable<User> GetAll()
         {
-            return _userRepositoryBase.GetAll();
+            return _userRepository.GetAll();
         }
 
         public User GetById(int id) 
         {
-            var user = _userRepositoryBase.GetAll().FirstOrDefault(x => x.Id == id);
+            var user = _userRepository.GetAll().FirstOrDefault(x => x.Id == id);
             return user;
         }
 
         public bool VerifyExist(string username)
         {
-            return _userRepositoryBase.GetAll().Count(s => s.Email == username.ToLower()) != 0;
+            return _userRepository.GetAll().Count(s => s.Email == username.ToLower()) != 0;
         }
 
     }

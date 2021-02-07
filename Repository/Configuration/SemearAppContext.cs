@@ -3,14 +3,12 @@ using SemearApi.Entities;
 
 namespace SemearApi.Repository.Configuration
 {
-    public partial class AppContext : DbContext
+    public partial class SemearAppContext : DbContext
     {
 
-        public AppContext()
-        {
-        }
+       
 
-        public AppContext(DbContextOptions<AppContext> options)
+        public SemearAppContext(DbContextOptions<SemearAppContext> options)
             : base(options)
         {
             this.Database.EnsureCreated();
@@ -26,10 +24,13 @@ namespace SemearApi.Repository.Configuration
    
             modelBuilder.Entity<User>()
                 .HasKey(u => u.Id);  
+            
             modelBuilder.Entity<Learn>()
                 .HasKey(u => u.Id);  
+            
             modelBuilder.Entity<Careers>()
                 .HasKey(u => u.Id);
+            
             modelBuilder.Entity<Intructs>()
                 .HasKey(u => u.Id);  
             
@@ -74,18 +75,11 @@ namespace SemearApi.Repository.Configuration
                 .WithMany(c => c.UserIntructs)
                 .HasForeignKey(userIntructs => userIntructs.IntructsId);
             
-            
-            
-            
         }
       
+        protected override void OnConfiguring(DbContextOptionsBuilder options)
+            => options.UseNpgsql("User ID =yauujhvwgrxrwl;Password=b4837aa0a8794ec03d31dcde9b54bdef5a16f87a0b1e40bde647a0cd8dc2e173;Server=ec2-54-211-77-238.compute-1.amazonaws.com;Port=5432;Database=d5dlj5bgo8djm;Integrated Security=true;Pooling=true; sslmode=Require; Trust Server Certificate=true;");
 
-
-   
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-        }
-        
  
         partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
     }

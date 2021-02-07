@@ -1,8 +1,10 @@
+using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using SemearApi.Entities;
 using SemearApi.Payload.request;
+using SemearApi.Payload.response;
 using SemearApi.Service;
 
 namespace SemearApi.Controllers
@@ -71,7 +73,10 @@ namespace SemearApi.Controllers
         public IActionResult GetAll()
         {
             var users = _userService.GetAll();
-            return Ok(users);
+
+            var userList = users.Select(s => new UserResponse(s)).ToList();
+         
+            return Ok(userList);
         }
         
         

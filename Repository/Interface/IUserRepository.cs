@@ -3,7 +3,7 @@ using SemearApi.Repository.Configuration;
 
 namespace SemearApi.Repository.Interface
 {
-    public interface IUserRepositoryBase : IRepositoryBase<User>
+    public interface IUserRepository : IRepositoryBase<User>
     {
         
     }

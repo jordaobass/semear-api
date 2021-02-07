@@ -12,7 +12,6 @@ using SemearApi.Repository;
 using SemearApi.Repository.Configuration;
 using SemearApi.Repository.Interface;
 using SemearApi.Service;
-using AppContext = SemearApi.Repository.Configuration.AppContext;
 
 namespace SemearApi
 {
@@ -29,7 +28,6 @@ namespace SemearApi
         {
             services.AddControllers();
             services.AddCors();
-            
             
             var appSettingsSection = Configuration.GetSection("AppSettings");
             services.Configure<AppSettings>(appSettingsSection);
@@ -58,11 +56,11 @@ namespace SemearApi
                     };
                 });
             
-            services.AddEntityFrameworkNpgsql().AddDbContext<AppContext>(opt =>
-                opt.UseNpgsql(Configuration.GetConnectionString("Default")
-                ));
+            services.AddEntityFrameworkNpgsql().AddDbContext<SemearAppContext>(opt =>
+                opt.UseNpgsql(Configuration.GetConnectionString("Default")));
+ 
             services.AddTransient(typeof(IRepositoryBase<>), typeof(RepositoryBase<>));
-            services.AddTransient<IUserRepositoryBase, UserRepositoryBase>();
+            services.AddTransient<IUserRepository, UserRepository>();
             services.AddTransient<IUserService, UserService>();
         }
 

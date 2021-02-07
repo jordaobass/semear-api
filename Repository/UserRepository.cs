@@ -4,9 +4,9 @@ using SemearApi.Repository.Interface;
 
 namespace SemearApi.Repository
 {
-    public class UserRepositoryBase : RepositoryBase<User>, IUserRepositoryBase
+    public class UserRepository : RepositoryBase<User>, IUserRepository
     {
-        public UserRepositoryBase(AppContext appContext) : base(appContext)
+        public UserRepository(SemearAppContext semearAppContext) : base(semearAppContext)
         {
         }
     }
