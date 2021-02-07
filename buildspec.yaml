@@ -10,12 +10,12 @@ phases:
   pre_build:
     commands:
       - echo Restore started on `date`
-      - dotnet restore Api.csproj
+      - dotnet restore SemearApi.csproj
       
   build:
     commands:
       - echo Build started on `date`
-      - dotnet build Api.csproj
+      - dotnet build SemearApi.csproj
       
   post_build:
     commands:
