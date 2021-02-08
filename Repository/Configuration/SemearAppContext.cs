@@ -5,9 +5,6 @@ namespace SemearApi.Repository.Configuration
 {
     public partial class SemearAppContext : DbContext
     {
-
-       
-
         public SemearAppContext(DbContextOptions<SemearAppContext> options)
             : base(options)
         {
@@ -16,12 +13,18 @@ namespace SemearApi.Repository.Configuration
         
         public virtual DbSet<User> user { get; set; }
         public virtual DbSet<Learn> learn { get; set; }
+        public virtual DbSet<UserLearn> UserLearns { get; set; }
+        public virtual DbSet<UserCareers> LearnCareers { get; set; }
         public virtual DbSet<Careers> careers { get; set; }
         public virtual DbSet<Intructs> intructs { get; set; }
+        public virtual DbSet<Review> reviews { get; set; }
         
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
    
+            modelBuilder.Entity<Review>()
+                .HasKey(u => u.Id);  
+            
             modelBuilder.Entity<User>()
                 .HasKey(u => u.Id);  
             
@@ -74,7 +77,11 @@ namespace SemearApi.Repository.Configuration
                 .HasOne(userIntructs => userIntructs.Intructs)
                 .WithMany(c => c.UserIntructs)
                 .HasForeignKey(userIntructs => userIntructs.IntructsId);
-            
+
+            /*modelBuilder.Entity<User>()
+                .HasOne(r => reviews);
+                */
+
         }
       
         protected override void OnConfiguring(DbContextOptionsBuilder options)

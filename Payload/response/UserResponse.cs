@@ -16,9 +16,9 @@ namespace SemearApi.Payload.response
         public string GitHub { get; set; }
         public string Password { get; set; }
         public string Role { get; set; }
-
         public List<string> Careeres  {get; set; }
-        
+        public List<int> Learns  {get; set; }
+        public List<int> Intructs  {get; set; }
         
         public UserResponse(User user)
         {
@@ -31,7 +31,9 @@ namespace SemearApi.Payload.response
             GitHub = user.GitHub;
             Password = user.Password;
             Role = user.Role;
-            Careeres = user.UserCareers.Select(s => s.Careers.Name).ToList();
+            Careeres = user.UserCareers?.Select(s => s.Careers.Name).ToList();
+            Learns = user.UserLearn?.Select(s => s.LearnId).ToList();
+            Intructs = user.UserIntructs?.Select(s => s.IntructsId).ToList();
         }
     }
 }

@@ -45,19 +45,20 @@ namespace SemearApi.Controllers
                 return BadRequest(new { message = "Nome de usuario Ja existe" });
             }
             
-            var response = await _userService.CreateUser(model.Convert());
+            var response = await _userService.CreateUser(model.Convert(), model.learn.ToList(), model.instruct.ToList());
+            
             if (response == 0)
                 return BadRequest(new { message = "Erro ao cadastrar usuario" });
             model.Id = response;
             return   Ok(model);
         }
         
-        [Authorize(Roles = Role.Admin)]
+        //[Authorize(Roles = Role.Admin)]
         [HttpGet("{id}")]
         public IActionResult GetById(int id)
         {
             var user =  _userService.GetById(id);
-            var model = new UserCreateRequest(user);
+            var model = new UserResponse(user);
             if (user == null)
                 return NotFound();
 
@@ -73,11 +74,34 @@ namespace SemearApi.Controllers
         public IActionResult GetAll()
         {
             var users = _userService.GetAll();
-
+            
             var userList = users.Select(s => new UserResponse(s)).ToList();
          
             return Ok(userList);
         }
+        
+        
+        
+        //para testar  Authorize remover apois o teste
+        /*
+        [Authorize(Roles = Role.Admin)]
+        */
+        
+        [HttpGet("filter/{learnId}")]
+        public IActionResult GetAll(int  learnId)
+        {
+            var users = _userService
+                .GetAll()
+                .Where(s =>s.UserLearn
+                    .Select(sl =>sl.LearnId)
+                    .Contains(learnId));
+            
+            var userList = users.Select(s => new UserResponse(s)).ToList();
+         
+            return Ok(userList);
+        }
+
+        
         
         
     }

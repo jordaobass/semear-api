@@ -9,5 +9,12 @@ namespace SemearApi.Entities
         public User User { get; set; }
         public int LearnId { get; set; }
         public Learn Learn { get; set; }
+
+
+        public UserLearn(int userId, int learnId)
+        {
+            UserId = userId;
+            LearnId = learnId;
+        }
     }
 }

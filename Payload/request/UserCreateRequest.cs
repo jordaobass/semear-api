@@ -1,4 +1,5 @@
 using System.ComponentModel.DataAnnotations;
+using System.Linq;
 using SemearApi.Entities;
 
 namespace SemearApi.Payload.request
@@ -17,6 +18,11 @@ namespace SemearApi.Payload.request
         public int  Id { get; set; }
  
         public string  Role { get; set; }
+        
+        
+        public int[] learn { get; set; }
+        
+        public int[] instruct { get; set; }
         
         public User Convert()
         {
